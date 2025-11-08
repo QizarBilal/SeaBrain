@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        lg: ".75rem", /* 12px */
+        md: ".5rem", /* 8px */
+        sm: ".25rem", /* 4px */
       },
       colors: {
         // Flat / base colors (regular buttons)
@@ -96,10 +96,35 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "wave": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: ".5" },
+        },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-in-right": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "wave": "wave 20s linear infinite",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
       },
     },
   },
