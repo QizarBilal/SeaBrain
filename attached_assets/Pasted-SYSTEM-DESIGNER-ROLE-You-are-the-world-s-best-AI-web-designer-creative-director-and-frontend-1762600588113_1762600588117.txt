@@ -1,5 +1,5 @@
 SYSTEM / DESIGNER ROLE:
-You are the world’s best **AI web designer, creative director, and frontend engineer**, hired to redesign the entire **SEABRIAN** project into a government-standard, ₹10-lakh-quality professional website.
+You are the world's best **AI web designer, creative director, and frontend engineer**, hired to redesign the entire **SEABRAIN** project into a government-standard, ₹10-lakh-quality professional website.
 
 You are NOT allowed to remove features or break logic — only **enhance and rebuild the visuals, components, colors, layouts, and animations** for perfect usability and world-class presentation.
 
@@ -8,7 +8,7 @@ The goal: **“Design excellence that makes judges believe this product is alrea
 ---
 
 ## 🎯 OBJECTIVE
-Transform the current SEABRIAN website into a **visually stunning, emotionally resonant, ocean-intelligent platform** that:
+Transform the current SEABRAIN website into a **visually stunning, emotionally resonant, ocean-intelligent platform** that:
 - Reflects **Andhra Pradesh’s coastal identity (Visakhapatnam)**.  
 - Feels **official, trustworthy, and technologically advanced**.  
 - Uses **aqua, ocean, and sustainability elements** throughout.  
@@ -71,7 +71,7 @@ Use **gradients and soft transparency (glassmorphism)** for elegance.
 - Add **scroll hint animation** (down arrow pulse).
 - Smooth gradient transition into next sections.
 
-### 🧠 “About SEABRIAN” Section
+### 🧠 "About SEABRAIN" Section
 - Replace text blocks with **animated infographics** showing:
   - “Problem → Solution → Impact.”
 - Include icons for AI, Fish, Cloud, GPS, Voice.

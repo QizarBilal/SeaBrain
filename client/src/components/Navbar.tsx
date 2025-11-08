@@ -33,7 +33,7 @@ export function Navbar() {
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold font-heading text-foreground">
-                  SEABRIAN
+                  SEABRAIN
                 </span>
                 <span className="text-[10px] text-muted-foreground font-medium">
                   Ocean Intelligence Platform

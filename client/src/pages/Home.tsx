@@ -36,7 +36,7 @@ export default function Home() {
               Ready to Transform Your Fishing?
             </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Join 2000+ fishermen who are already using SEABRIAN to increase their catch and income
+              Join 2000+ fishermen who are already using SEABRAIN to increase their catch and income
             </p>
             <Button
               size="lg"
@@ -56,7 +56,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-6">
             <h3 className="text-2xl font-bold text-foreground mb-2 font-heading">
-              SEABRIAN
+              SEABRAIN
             </h3>
             <p className="text-sm text-muted-foreground">
               Empowering Bharat's Fishermen through Intelligent Oceans
@@ -70,7 +70,7 @@ export default function Home() {
             <span>Digital Fisheries Mission</span>
           </div>
           <div className="text-xs text-muted-foreground">
-            © 2025 SEABRIAN. Supporting UN SDG-14: Life Below Water
+            © 2025 SEABRAIN. Supporting UN SDG-14: Life Below Water
           </div>
         </div>
       </footer>

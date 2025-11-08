@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,31 +32,63 @@ const mockResponses: Record<string, { english: string; telugu: string; tamil: st
   }
 };
 
+const welcomeMessages = {
+  english: "🌊 Hello! I'm SEA-Assist, your intelligent fishing companion! I can help you with:\n\n🎣 Best fishing zones & times\n☀️ Weather & safety alerts\n💰 Market prices & selling tips\n📱 Using SeaBrain features\n\nWhat would you like to know?",
+  telugu: "🌊 నమస్కారం! నేను SEA-Assist, మీ తెలివైన చేపలు పట్టే సహచరుడిని! నేను మీకు సహాయం చేయగలను:\n\n🎣 ఉత్తమ చేపలు పట్టే జోన్లు & సమయాలు\n☀️ వాతావరణం & భద్రతా హెచ్చరికలు\n💰 మార్కెట్ ధరలు & అమ్మకపు చిట్కాలు\n📱 సీబ్రెయిన్ ఫీచర్లను ఉపయోగించడం\n\nమీరు ఏమి తెలుసుకోవాలనుకుంటున్నారు?",
+  tamil: "🌊 வணக்கம்! நான் SEA-Assist, உங்கள் புத்திசாலி மீன்பிடி துணை! நான் உங்களுக்கு உதவ முடியும்:\n\n🎣 சிறந்த மீன்பிடி மண்டலங்கள் & நேரங்கள்\n☀️ வானிலை & பாதுகாப்பு எச்சரிக்கைகள்\n💰 சந்தை விலைகள் & விற்பனை குறிப்புகள்\n📱 சீபிரைன் அம்சங்களைப் பயன்படுத்துதல்\n\nநீங்கள் என்ன தெரிந்து கொள்ள விரும்புகிறீர்கள்?"
+};
+
+const quickQuestions = {
+  english: ["Where to fish today?", "Current weather?", "Market prices?", "How to use SeaBrain?"],
+  telugu: ["ఈ రోజు ఎక్కడ చేపలు పట్టాలి?", "ప్రస్తుత వాతావరణం?", "మార్కెట్ ధరలు?", "సీబ్రెయిన్ ఎలా ఉపయోగించాలి?"],
+  tamil: ["இன்று எங்கே மீன்பிடிக்க வேண்டும்?", "தற்போதைய வானிலை?", "சந்தை விலைகள்?", "சீபிரைன் எப்படி பயன்படுத்துவது?"]
+};
+
+const placeholderText = {
+  english: "Ask me anything...",
+  telugu: "నన్ను ఏదైనా అడగండి...",
+  tamil: "என்னிடம் கேளுங்கள்..."
+};
+
+const typingText = {
+  english: "SEA-Assist is typing...",
+  telugu: "SEA-Assist టైప్ చేస్తోంది...",
+  tamil: "SEA-Assist தட்டச்சு செய்கிறது..."
+};
+
 export function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState<Language>("english");
   const [messages, setMessages] = useState<Array<{ text: string; isBot: boolean }>>([
-    { text: "Hello! I'm SEA-Assist. Ask me about fishing zones, weather, or prices!", isBot: true }
+    { text: welcomeMessages.english, isBot: true }
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showQuickQuestions, setShowQuickQuestions] = useState(true);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+  // Update welcome message when language changes
+  useEffect(() => {
+    setMessages([{ text: welcomeMessages[language], isBot: true }]);
+    setShowQuickQuestions(true);
+  }, [language]);
 
-    const userMessage = input.trim();
+  const handleSend = async (messageText?: string) => {
+    const userMessage = (messageText || input).trim();
+    if (!userMessage) return;
+
     setMessages(prev => [...prev, { text: userMessage, isBot: false }]);
     setInput("");
     setIsTyping(true);
+    setShowQuickQuestions(false);
 
     try {
       const response = await fetch(`/api/chatbot?q=${encodeURIComponent(userMessage)}`);
       if (response.ok) {
         const data = await response.json();
-        const responseText = language === "english" ? data.responseEnglish : 
-                           language === "telugu" ? data.responseTelugu : 
-                           data.responseTamil;
-        setMessages(prev => [...prev, { text: responseText, isBot: true }]);
+        const responseText = language === "english" ? data.answerEnglish : 
+                           language === "telugu" ? data.answerTelugu : 
+                           data.answerTamil;
+        setMessages(prev => [...prev, { text: responseText || data.answerEnglish, isBot: true }]);
       } else {
         const fallbackResponse = {
           english: "I can help with fishing zones, weather, prices, and safety tips. What would you like to know?",
@@ -170,10 +202,32 @@ export function FloatingChatbot() {
                       }`}
                       data-testid={`message-${idx}`}
                     >
-                      <p className="text-sm">{msg.text}</p>
+                      <p className="text-sm whitespace-pre-line">{msg.text}</p>
                     </div>
                   </motion.div>
                 ))}
+                
+                {/* Quick Question Buttons */}
+                {showQuickQuestions && !isTyping && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-wrap gap-2 pt-2"
+                  >
+                    {quickQuestions[language].map((question, idx) => (
+                      <Button
+                        key={idx}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs bg-white/50 hover:bg-primary hover:text-white transition-all"
+                        onClick={() => handleSend(question)}
+                      >
+                        {question}
+                      </Button>
+                    ))}
+                  </motion.div>
+                )}
+                
                 {isTyping && (
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -207,18 +261,12 @@ export function FloatingChatbot() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                    placeholder={
-                      language === "english"
-                        ? "Ask me anything..."
-                        : language === "telugu"
-                        ? "నన్ను ఏదైనా అడగండి..."
-                        : "என்னிடம் கேளுங்கள்..."
-                    }
+                    placeholder={placeholderText[language]}
                     data-testid="input-chatbot-message"
                   />
                   <Button
                     size="icon"
-                    onClick={handleSend}
+                    onClick={() => handleSend()}
                     disabled={!input.trim()}
                     data-testid="button-chatbot-send"
                   >

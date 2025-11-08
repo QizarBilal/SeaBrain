@@ -1,8 +1,8 @@
-# SEABRIAN - Ocean Intelligence Platform
+# SEABRAIN - Ocean Intelligence Platform
 
 ## Project Overview
 
-SEABRIAN is a **government-grade ocean intelligence platform** designed for the fishermen of Andhra Pradesh, India. Built for the **SmartIDEAthon 2025 | Digital Fisheries Mission**, this platform combines AI-powered fish predictions, real-time climate monitoring, and marketplace intelligence to empower coastal fishing communities.
+SEABRAIN is a **government-grade ocean intelligence platform** designed for the fishermen of Andhra Pradesh, India. Built for the **SmartIDEAthon 2025 | Digital Fisheries Mission**, this platform combines AI-powered fish predictions, real-time climate monitoring, and marketplace intelligence to empower coastal fishing communities.
 
 ### Vision
 *"Empowering Bharat's Fishermen through Intelligent Oceans"*

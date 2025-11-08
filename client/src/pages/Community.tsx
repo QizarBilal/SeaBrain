@@ -75,7 +75,7 @@ export default function Community() {
             Community Analytics
           </h1>
           <p className="text-muted-foreground">
-            Collective insights from the SEABRIAN fishing community
+            Collective insights from the SEABRAIN fishing community
           </p>
         </motion.div>
 
@@ -252,7 +252,7 @@ export default function Community() {
                 Community Impact
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Together, the SEABRIAN community has reduced fuel costs by{" "}
+                Together, the SEABRAIN community has reduced fuel costs by{" "}
                 <span className="font-bold text-secondary">40%</span>, increased daily
                 catch by <span className="font-bold text-secondary">32%</span>, and
                 improved market prices by{" "}

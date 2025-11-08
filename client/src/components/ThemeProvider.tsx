@@ -24,7 +24,7 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
-    const stored = localStorage.getItem("seabrian-theme") as Theme | null;
+    const stored = localStorage.getItem("seabrain-theme") as Theme | null;
     if (stored) {
       setTheme(stored);
     }
@@ -34,7 +34,7 @@ export function ThemeProvider({
     const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
-    localStorage.setItem("seabrian-theme", theme);
+    localStorage.setItem("seabrain-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {

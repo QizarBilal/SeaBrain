@@ -1,4 +1,4 @@
-# SEABRIAN Ocean Intelligence Platform - Design Guidelines
+# SEABRAIN Ocean Intelligence Platform - Design Guidelines
 
 ## Design Philosophy
 **"Ocean Intelligence meets Human Wisdom"** - A government-standard, ₹10-lakh-quality platform reflecting Andhra Pradesh's coastal identity with professional, trustworthy, and technologically advanced design.
@@ -49,7 +49,7 @@ Use Tailwind units: 8, 12, 16, 20, 24, 32 for consistent rhythm. Section spacing
 
 ### Feature Components
 
-#### About SEABRIAN
+#### About SEABRAIN
 - Animated infographics showing "Problem → Solution → Impact" flow
 - Icon-driven sections: AI, Fish, Cloud, GPS, Voice
 - Lottie animations for Offline Sync, AI Brain, Weather Alert

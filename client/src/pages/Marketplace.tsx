@@ -26,7 +26,7 @@ const priceData = [
 ];
 
 export default function Marketplace() {
-  const [selectedListing, setSelectedListing] = useState<number | null>(null);
+  const [selectedListing, setSelectedListing] = useState<string | null>(null);
   
   const { data: apiListings, isLoading, error } = useQuery<MarketplaceListing[]>({
     queryKey: ['/api/marketplace'],
@@ -99,7 +99,7 @@ export default function Marketplace() {
                     {/* Avatar */}
                     <Avatar className="w-12 h-12">
                       <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white font-semibold">
-                        {listing.seller.split(" ").map((n) => n[0]).join("")}
+                        {listing.sellerName?.split(" ").map((n) => n[0]).join("") || "??"}
                       </AvatarFallback>
                     </Avatar>
 
@@ -108,16 +108,16 @@ export default function Marketplace() {
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <h3 className="font-bold text-foreground font-heading">
-                            {listing.seller}
+                            {listing.sellerName}
                           </h3>
                           <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                             <MapPin className="w-3 h-3" />
-                            <span>{listing.port}</span>
+                            <span>{listing.sellerPort}</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-1">
                           <Star className="w-4 h-4 fill-accent text-accent" />
-                          <span className="text-sm font-semibold">{listing.rating}</span>
+                          <span className="text-sm font-semibold">4.8</span>
                         </div>
                       </div>
 
@@ -147,7 +147,7 @@ export default function Marketplace() {
                           <div className="text-xs text-muted-foreground mb-1">Available</div>
                           <div className="flex items-center gap-2">
                             <Calendar className="w-3 h-3 text-muted-foreground" />
-                            <span className="font-medium text-foreground">{listing.date}</span>
+                            <span className="font-medium text-foreground">{listing.availableDate}</span>
                           </div>
                         </div>
                       </div>
@@ -159,7 +159,7 @@ export default function Marketplace() {
                         >
                           {listing.quality}
                         </Badge>
-                        {listing.date === "Today" && (
+                        {listing.availableDate === "Today" && (
                           <Badge variant="outline" className="border-accent text-accent">
                             Available Now
                           </Badge>
@@ -170,7 +170,7 @@ export default function Marketplace() {
                         <Button
                           variant="default"
                           size="sm"
-                          onClick={() => setSelectedListing(listing.id)}
+                          onClick={() => setSelectedListing(listing.id || null)}
                           data-testid={`button-chat-${idx}`}
                         >
                           <MessageSquare className="w-4 h-4 mr-2" />
