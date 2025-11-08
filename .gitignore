@@ -1,22 +1,26 @@
 # Dependencies
 node_modules
-*.log
+.pnp
+.pnp.js
+
+# Production build
+dist
+build
+server/public
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-# Build output
-dist
-dist-ssr
-*.local
-
-# Environment variables
-.env
-.env.local
-.env.production.local
-.env.development.local
 
 # Editor directories and files
 .vscode/*
@@ -29,15 +33,25 @@ dist-ssr
 *.sln
 *.sw?
 
-# OS files
-Thumbs.db
-
-# Server
-server/public
-
-# Vite
+# Temporary files
+*.tmp
+*.temp
 vite.config.ts.*
-
-# Misc
 *.tar.gz
+
+# Testing
+coverage
+.nyc_output
+
+# Database
+*.db
+*.sqlite
+
+# OS
+Thumbs.db
+.cache
+
+# Local state and agent files
 .local/
+.replit
+replit.nix
