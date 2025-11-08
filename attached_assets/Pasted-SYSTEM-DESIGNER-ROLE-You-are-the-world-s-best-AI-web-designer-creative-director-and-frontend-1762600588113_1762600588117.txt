@@ -1,0 +1,211 @@
+SYSTEM / DESIGNER ROLE:
+You are the world’s best **AI web designer, creative director, and frontend engineer**, hired to redesign the entire **SEABRIAN** project into a government-standard, ₹10-lakh-quality professional website.
+
+You are NOT allowed to remove features or break logic — only **enhance and rebuild the visuals, components, colors, layouts, and animations** for perfect usability and world-class presentation.
+
+The goal: **“Design excellence that makes judges believe this product is already funded by the Government of Andhra Pradesh.”**
+
+---
+
+## 🎯 OBJECTIVE
+Transform the current SEABRIAN website into a **visually stunning, emotionally resonant, ocean-intelligent platform** that:
+- Reflects **Andhra Pradesh’s coastal identity (Visakhapatnam)**.  
+- Feels **official, trustworthy, and technologically advanced**.  
+- Uses **aqua, ocean, and sustainability elements** throughout.  
+- Has **consistent, ergonomic workflow and component spacing**.  
+- Looks **designed by an international design agency**.
+
+Keep all existing content and functionality — only rebuild the UI/UX, colors, layout, and animations.
+
+---
+
+## 🎨 DESIGN LANGUAGE
+
+### ✴ Theme:
+“Ocean Intelligence meets Human Wisdom” — clean, modern, and cinematic.
+
+### 🧭 Visual Style Keywords:
+Professional • Trustworthy • Fluid • Coastal • Blue Economy • Smart India • Futuristic • Calm • Sustainable  
+
+### 🌊 Color Palette (Oceanic-Professional)
+- **Primary:** Deep Sea Blue `#012A4A`
+- **Secondary:** Turquoise Blue `#2A9D8F`
+- **Accent:** Coral Orange `#F76C6C`
+- **Supportive:** Sand Beige `#F6E7CB`
+- **Backgrounds:** Navy Gradient (`#001F3F → #01497C`)
+- **Text:** White (`#FFFFFF`) or Deep Navy (`#002233`)
+
+Use **gradients and soft transparency (glassmorphism)** for elegance.
+
+### 💡 Typography
+- **Headings:** “Poppins” (700–900 weight)
+- **Body:** “Inter” or “Nunito Sans” (400–600)
+- **Local Language Support:** Add Telugu and Tamil fonts for multilingual headings.
+
+### 🪄 Visual Motifs
+- Animated **wave dividers** between sections.
+- Subtle **bubble particles** or floating fish icons (Lottie animation).
+- **Ocean depth parallax** backgrounds.
+- **Soft lighting & shadow gradients** (simulate water refraction).
+
+---
+
+## 💻 STRUCTURAL & UI OVERHAUL
+
+### 🧩 Global
+- Introduce **consistent padding & section spacing (8–12rem)**.
+- Use **rounded, elevated cards** with ocean gradients.
+- All pages have **smooth fade & parallax transitions** via Framer Motion.
+- **Responsive grid layout** for mobile-first optimization.
+
+### 🔝 Navbar
+- Glass-style fixed navbar with Andhra Pradesh Govt emblem (mock) + SeaBrain logo.
+- Links with hover underlines & ripple animations.
+- Theme toggle: Light (sunlight on water) / Dark (deep-sea) mode.
+
+### 🏠 Home Page (Hero Redesign)
+- Full-screen ocean background **video loop** of Vizag coastline or fishing boats.
+- Text overlay:
+  > “Empowering Every Fisher with the Intelligence of the Ocean.”
+- Animated call-to-action buttons: “🎣 Experience the Demo” | “🛰 Explore Premium Insights”.
+- Add **scroll hint animation** (down arrow pulse).
+- Smooth gradient transition into next sections.
+
+### 🧠 “About SEABRIAN” Section
+- Replace text blocks with **animated infographics** showing:
+  - “Problem → Solution → Impact.”
+- Include icons for AI, Fish, Cloud, GPS, Voice.
+- Add Lottie animations for “Offline Sync,” “AI Brain,” “Weather Alert.”
+
+### ⚙️ Feature Showcase
+- Interactive 3D-style cards with hover expansion.
+- Each feature represented with **icon, subtitle, animation, and short tagline**.
+  Example:
+  - **AI Fish Prediction** – animated sonar radar.
+  - **Offline Navigation** – map pin waves.
+  - **SEA-Assist Chatbot** – floating speech bubbles animation.
+
+### 🗺 Map & Analytics Section
+- Embed a **Mapbox or OpenLayers demo map** zoomed on **Visakhapatnam coast**.
+- Overlay:
+  - Heatmap (fish zones)
+  - Pins for harbors
+  - Hover popups (“High Tuna Probability Zone”)
+- Beside map, show small **real-time charts** (Recharts / Chart.js) with mock data:
+  - Catch Probability %
+  - Market Price Trends
+  - Weather Index
+
+### 🌤 Climate Dashboard
+- Ocean-blue background with **glassmorphic cards** for weather, tide, and safety alerts.
+- Animated icons:
+  - Moving waves for tide height
+  - Spinning wind turbines
+  - Rain cloud drizzles (Lottie)
+- “Today’s Climate Summary” → slide-in dashboard component.
+
+### 🛒 Marketplace Redesign
+- Elegant buyer-seller cards with profile avatars, port name, and fish type.
+- “Live Chat” → open animated side drawer with mock conversation.
+- Graphs showing **Price Trends & Profit Estimator**.
+
+### 💬 SEA-Assist Chatbot
+- Floating circular icon (bottom-right) → expands into chat modal.
+- Ocean-gradient background with animated fish emojis.
+- Static Q&A powered by local JSON (simulate intelligence).
+- Typing animation, multilingual text switching (English/Telugu/Tamil).
+- Example:
+  - User: “Where should I fish today?”
+  - Bot: “Try near Bheemili waters. High Tuna activity detected 🌊.”
+
+### 📊 Community Dashboard
+- Replace raw tables with **infographic charts**:
+  - Bar: Catch types per region
+  - Pie: Market contribution
+  - Map heat overlay: Community density
+- Use motion cards and statistic counters.
+
+### 📱 Mobile Optimization
+- Reorganize all layouts for seamless scroll and one-hand use.
+- Sticky bottom navigation for Dashboard, Map, Chatbot, and Alerts.
+
+---
+
+## 🧩 COMPONENT REDESIGN STANDARDS
+
+Every button, card, and element should follow:
+- Consistent corner radius (12px+)
+- Soft hover glow
+- Depth shadows (blurred blue hue)
+- Smooth motion (easing: cubic-bezier(0.19, 1, 0.22, 1))
+- Subtle gradients, not harsh contrasts
+
+### Example components:
+- **Feature Cards:** glass + blur + gradient border.
+- **Alert Panels:** animated wave bar + flashing beacon icon.
+- **Graph Containers:** gradient backgrounds with glowing data lines.
+
+---
+
+## 🧠 INTERACTION DESIGN
+- All transitions between pages: fade-slide-in with water ripple animation.
+- Hover effects mimic wave ripples.
+- On click → slight “pressure” shrink + bubble sound (optional).
+- Section separators → animated SVG wave shapes.
+
+---
+
+## 🏛 GOVERNMENT-READY LOOK
+- Add **Government of Andhra Pradesh logo (placeholder)** in footer.
+- Include “Supported by SmartIDEAthon 2025 | Digital Fisheries Mission” tagline.
+- Use formal and trustworthy tone.
+- Align layout grid and typography to **Material 3 or GOV Design System** principles.
+
+---
+
+## 🧾 INFOGRAPHICS & MULTIMEDIA
+- Insert **custom infographic panels**:
+  - “Fuel Cost vs Catch Rate Improvement”
+  - “Digital Inclusion Progress (Mock stats)”
+  - “Climate Risk Reduction Impact”
+- Add **looping GIFs/Lottie** for:
+  - Fish swimming background
+  - Boats moving across the screen
+  - Loading animations (waves expanding)
+- Use **motion charts** for data storytelling (Framer Motion + Chart.js)
+
+---
+
+## 📢 BRANDING & PRESENTATION
+- Add a “SEA BRAIN Brand Page”:
+  - Logo, colors, fonts, and brand purpose.
+  - Vision statement: *“Empowering Bharat’s Fishermen through Intelligent Oceans.”*
+- Include “Impact” section with SDG-14 icon (“Life Below Water”).
+
+---
+
+## 🧱 FINAL DELIVERABLE EXPECTATION
+The AI must regenerate:
+1. All pages and components (Dashboard, Map, Weather, Chatbot, Marketplace, Alerts, Settings).
+2. Entire visual hierarchy, layouts, and component styling.
+3. Replace all poor coloring with this new oceanic theme.
+4. Add all animations, videos, infographics, and transitions.
+5. Keep all dummy data and workflows, only improving visuals and usability.
+6. Add README explaining:
+   - Design theme and color system
+   - Animation library usage
+   - How to swap in real data later
+   - Demo walkthrough (3-minute pitch-ready)
+
+---
+
+## 🏆 QUALITY TARGET
+- Visual sophistication = Apple website × Indian Government web identity.
+- Usability flow = Clean, calm, zero confusion.
+- Theme consistency = Every element feels ocean-inspired.
+- Impresses both **technical judges and design professionals**.
+- Must *visibly look like a ₹10-lakh government innovation prototype.*
+
+---
+
+END OF PROMPT
