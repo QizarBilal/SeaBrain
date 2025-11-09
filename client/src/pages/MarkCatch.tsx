@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Fish, Calendar, Weight, Navigation, Search, TrendingUp } from "lucide-react";
+import { MapPin, Fish, Calendar, Weight, Navigation, Search, TrendingUp, AlertTriangle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
