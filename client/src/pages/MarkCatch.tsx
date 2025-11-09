@@ -10,17 +10,40 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { Icon } from "leaflet";
+
+// Fix for default marker icons
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// @ts-ignore
+delete Icon.Default.prototype._getIconUrl;
+Icon.Default.mergeOptions({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+});
 
 const fishSpecies = [
   "Tuna", "Mackerel", "Pomfret", "Anchovy", "Sardine", 
   "Prawns", "King Fish", "Seer Fish", "Barracuda", "Snapper"
 ];
 
+// Each fish species has different location across AP coast (offshore)
 const mockPredictions = {
-  "Tuna": { probability: 85, zones: ["Bheemili", "Rushikonda"], time: "4:30 AM - 7:00 AM", lat: 17.89, lng: 83.45 },
-  "Mackerel": { probability: 72, zones: ["Yarada", "Gangavaram"], time: "5:00 AM - 8:00 AM", lat: 17.65, lng: 83.28 },
-  "Pomfret": { probability: 68, zones: ["Visakhapatnam Port", "Dolphin's Nose"], time: "6:00 AM - 9:00 AM", lat: 17.69, lng: 83.22 },
-  "Anchovy": { probability: 91, zones: ["Appikonda", "Tenneti Park"], time: "3:30 AM - 6:30 AM", lat: 17.75, lng: 83.35 },
+  "Tuna": { probability: 85, zones: ["Bheemili Deep Sea", "Pudimadaka Offshore"], time: "4:30 AM - 7:00 AM", lat: 17.92, lng: 83.55, name: "Northern Vizag Waters" },
+  "Mackerel": { probability: 72, zones: ["Kakinada Offshore", "Uppada Deep Waters"], time: "5:00 AM - 8:00 AM", lat: 16.98, lng: 82.75, name: "East Godavari Zone" },
+  "Pomfret": { probability: 68, zones: ["Machilipatnam Deep Sea", "Nizampatnam Waters"], time: "6:00 AM - 9:00 AM", lat: 16.18, lng: 81.45, name: "Krishna District Zone" },
+  "Anchovy": { probability: 91, zones: ["Yarada Offshore", "Gangavaram Deep Waters"], time: "3:30 AM - 6:30 AM", lat: 17.68, lng: 83.43, name: "South Vizag Waters" },
+  "Sardine": { probability: 78, zones: ["Kalingapatnam Deep Sea", "Bhavanapadu Offshore"], time: "5:30 AM - 8:30 AM", lat: 18.35, lng: 84.18, name: "Srikakulam Waters" },
+  "Prawns": { probability: 84, zones: ["Narsapur Offshore", "Bhimavaram Waters"], time: "4:00 AM - 7:00 AM", lat: 16.45, lng: 82.05, name: "West Godavari Zone" },
+  "King Fish": { probability: 88, zones: ["Krishnapatnam Deep Sea", "Mypadu Offshore"], time: "3:30 AM - 6:30 AM", lat: 14.25, lng: 80.20, name: "Nellore Waters" },
+  "Seer Fish": { probability: 81, zones: ["Chirala Offshore", "Vodarevu Deep Waters"], time: "5:00 AM - 8:00 AM", lat: 15.82, lng: 80.92, name: "Prakasam District Zone" },
+  "Barracuda": { probability: 76, zones: ["Rushikonda Deep Sea", "Appikonda Offshore"], time: "4:30 AM - 7:30 AM", lat: 17.82, lng: 83.52, name: "Central Vizag Waters" },
+  "Snapper": { probability: 79, zones: ["Antarvedi Ocean", "Yanam Offshore"], time: "6:00 AM - 9:00 AM", lat: 16.35, lng: 81.88, name: "Godavari Delta Zone" },
 };
 
 export default function MarkCatch() {
@@ -243,45 +266,28 @@ export default function MarkCatch() {
                     Your Location
                   </h3>
                   
-                  {/* Mock Map Display */}
-                  <div className="relative w-full h-[400px] rounded-lg overflow-hidden bg-muted border border-border">
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="absolute inset-0 flex items-center justify-center"
+                  {/* Interactive Map Display */}
+                  <div className="relative w-full h-[400px] rounded-lg overflow-hidden border border-border">
+                    <MapContainer
+                      center={[mockLocation.lat, mockLocation.lng]}
+                      zoom={12}
+                      style={{ height: "100%", width: "100%" }}
+                      scrollWheelZoom={false}
                     >
-                      <div className="text-center">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                          <MapPin className="w-8 h-8 text-primary-foreground" />
-                        </div>
-                        <div className="text-foreground font-semibold">
-                          {mockLocation.lat}°N, {mockLocation.lng}°E
-                        </div>
-                        <div className="text-muted-foreground text-sm mt-2">
-                          Visakhapatnam Coast
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Animated Circles */}
-                    <motion.div
-                      animate={{
-                        scale: [1, 2, 1],
-                        opacity: [0.5, 0, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeOut",
-                      }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-primary"
-                    />
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; OpenStreetMap'
+                      />
+                      <Marker position={[mockLocation.lat, mockLocation.lng]}>
+                        <Popup>
+                          <div className="text-center">
+                            <strong>Your Current Location</strong><br />
+                            {mockLocation.lat}°N, {mockLocation.lng}°E<br />
+                            <span className="text-xs text-muted-foreground">Visakhapatnam Coast</span>
+                          </div>
+                        </Popup>
+                      </Marker>
+                    </MapContainer>
                   </div>
                 </Card>
               </motion.div>
@@ -408,60 +414,55 @@ export default function MarkCatch() {
                 <Card className="p-6 h-full">
                   <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
                     <MapPin className="w-5 h-5" />
-                    Prediction Map
+                    Prediction Map - {prediction ? prediction.name : "Andhra Pradesh Coast"}
                   </h3>
                   
-                  {/* Mock Prediction Map */}
-                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-muted border border-border">
+                  {/* Interactive Prediction Map */}
+                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border">
                     {prediction ? (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="absolute inset-0 flex items-center justify-center"
+                      <MapContainer
+                        center={[prediction.lat, prediction.lng]}
+                        zoom={10}
+                        style={{ height: "100%", width: "100%" }}
+                        scrollWheelZoom={false}
+                        key={prediction.fish}
                       >
-                        <div className="text-center">
-                          {/* Animated Fish Markers */}
-                          <motion.div
-                            animate={{
-                              y: [-10, 10, -10],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                            className="mb-4"
-                          >
-                            <div className="text-6xl">🐟</div>
-                          </motion.div>
-                          
-                          <div className="text-foreground font-semibold text-lg mb-2">
-                            {prediction.fish} Zone
-                          </div>
-                          <div className="text-muted-foreground text-sm">
-                            {prediction.lat}°N, {prediction.lng}°E
-                          </div>
-                          
-                          {/* Heatmap Effect */}
-                          <motion.div
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.3, 0, 0.3],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeOut",
-                            }}
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-primary/20"
-                          />
-                        </div>
-                      </motion.div>
+                        <TileLayer
+                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                          attribution='&copy; OpenStreetMap'
+                        />
+                        <Marker position={[prediction.lat, prediction.lng]}>
+                          <Popup>
+                            <div className="text-center">
+                              <strong>{prediction.fish} Prediction Zone</strong><br />
+                              <span className="text-sm font-semibold text-green-600">
+                                {prediction.probability}% Probability
+                              </span><br />
+                              {prediction.lat}°N, {prediction.lng}°E<br />
+                              <span className="text-xs text-muted-foreground">{prediction.name}</span><br />
+                              <span className="text-xs font-semibold">Best Time: {prediction.time}</span>
+                            </div>
+                          </Popup>
+                        </Marker>
+                      </MapContainer>
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-muted-foreground">
-                          <Search className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                          <p>Search for a fish to view predictions</p>
+                      <MapContainer
+                        center={[16.5, 82.0]}
+                        zoom={7}
+                        style={{ height: "100%", width: "100%" }}
+                        scrollWheelZoom={false}
+                      >
+                        <TileLayer
+                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                          attribution='&copy; OpenStreetMap'
+                        />
+                      </MapContainer>
+                    )}
+                    {!prediction && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-black/20">
+                        <div className="text-center text-white bg-black/50 p-4 rounded-lg">
+                          <Search className="w-12 h-12 mx-auto mb-3" />
+                          <p>Search for a fish to view predictions on map</p>
                         </div>
                       </div>
                     )}
