@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, Phone, Mail, MapPin, Send, LifeBuoy } from "lucide-react";
+import { AlertCircle, Phone, Mail, MapPin, Send, LifeBuoy, Linkedin, Code, FileText, Palette } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -235,6 +236,169 @@ export default function ContactSOS() {
             </div>
           </Card>
         </motion.div>
+      </div>
+
+      {/* Meet the Team Section */}
+      <div className="max-w-7xl mx-auto mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 font-heading">
+            Meet the Minds Behind SeaBrain
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Passionate innovators dedicated to empowering India's fishing communities
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Founder Card - Sakthivel S M */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.7 }}
+          >
+            <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
+              <div className="relative h-64 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent z-10" />
+                <img
+                  src="/sakthivel.jpg"
+                  alt="Sakthivel S M - Founder"
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute bottom-4 left-4 z-20">
+                  <Badge className="bg-primary text-primary-foreground text-sm px-3 py-1">
+                    Founder
+                  </Badge>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-1 font-heading">
+                    Sakthivel S M
+                  </h3>
+                  <p className="text-sm font-semibold text-primary">
+                    Founder, Brainstormer & Documentor
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <FileText className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                    <p>Visionary behind SeaBrain's mission to revolutionize India's fishing industry through AI and ocean intelligence</p>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <FileText className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                    <p>Expert in strategic planning, documentation, and conceptualizing innovative solutions for coastal communities</p>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <FileText className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                    <p>Passionate advocate for sustainable fishing practices and empowering fishermen with technology</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <a 
+                    href="mailto:s.m.sakthivelofficial@gmail.com"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Mail className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="font-medium">s.m.sakthivelofficial@gmail.com</span>
+                  </a>
+                  <a 
+                    href="https://linkedin.com/in/callmedataman"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Linkedin className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="font-medium">linkedin.com/in/callmedataman</span>
+                  </a>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Co-Founder Card - Mohammed Qizar Bilal */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-secondary/50">
+              <div className="relative h-64 bg-gradient-to-br from-secondary/20 via-accent/20 to-primary/20 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent z-10" />
+                <img
+                  src="/qizarbilal.png"
+                  alt="Mohammed Qizar Bilal - Co-Founder"
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute bottom-4 left-4 z-20">
+                  <Badge className="bg-secondary text-secondary-foreground text-sm px-3 py-1">
+                    Co-Founder
+                  </Badge>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-1 font-heading">
+                    Mohammed Qizar Bilal
+                  </h3>
+                  <p className="text-sm font-semibold text-secondary">
+                    Co-Founder, Technical Implementor & Designer
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <Code className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                    <p>Full-stack architect and developer who brought SeaBrain's vision to life with cutting-edge technology</p>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <Palette className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                    <p>Expert in UI/UX design, crafting intuitive and beautiful interfaces for fishermen and coastal communities</p>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <Code className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                    <p>Specializes in AI integration, real-time data systems, and building scalable ocean intelligence platforms</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <a 
+                    href="mailto:bilalqizar@gmail.com"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-secondary transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                      <Mail className="w-4 h-4 text-secondary" />
+                    </div>
+                    <span className="font-medium">bilalqizar@gmail.com</span>
+                  </a>
+                  <a 
+                    href="https://linkedin.com/in/mohammed-qizar-bilal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-secondary transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                      <Linkedin className="w-4 h-4 text-secondary" />
+                    </div>
+                    <span className="font-medium">linkedin.com/in/mohammed-qizar-bilal</span>
+                  </a>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
