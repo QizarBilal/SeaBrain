@@ -25,6 +25,94 @@ const priceData = [
   { day: "Fri", pomfret: 420, tuna: 380, sardine: 180 },
 ];
 
+// Mock marketplace listings for demo
+const mockListings: MarketplaceListing[] = [
+  {
+    id: "1",
+    userId: 1,
+    fishType: "Pomfret",
+    quantity: 50,
+    price: 420,
+    location: "Visakhapatnam Harbor",
+    phone: "+91 98765 43210",
+    description: "Fresh premium pomfret caught today morning. High quality, ideal for export.",
+    status: "active",
+    rating: 4.8,
+    totalSales: 127,
+    createdAt: new Date(),
+  },
+  {
+    id: "2",
+    userId: 2,
+    fishType: "Tuna",
+    quantity: 120,
+    price: 380,
+    location: "Kakinada Port",
+    phone: "+91 98765 43211",
+    description: "Large yellowfin tuna, excellent condition. Bulk orders welcome.",
+    status: "active",
+    rating: 4.9,
+    totalSales: 215,
+    createdAt: new Date(),
+  },
+  {
+    id: "3",
+    userId: 3,
+    fishType: "King Fish",
+    quantity: 80,
+    price: 450,
+    location: "Machilipatnam",
+    phone: "+91 98765 43212",
+    description: "Premium king fish, perfect size. Direct from boat to market.",
+    status: "active",
+    rating: 4.7,
+    totalSales: 98,
+    createdAt: new Date(),
+  },
+  {
+    id: "4",
+    userId: 4,
+    fishType: "Sardine",
+    quantity: 200,
+    price: 180,
+    location: "Bheemunipatnam",
+    phone: "+91 98765 43213",
+    description: "Fresh sardines in bulk. Great for processing and canning.",
+    status: "active",
+    rating: 4.6,
+    totalSales: 156,
+    createdAt: new Date(),
+  },
+  {
+    id: "5",
+    userId: 5,
+    fishType: "Prawns",
+    quantity: 30,
+    price: 650,
+    location: "Visakhapatnam Harbor",
+    phone: "+91 98765 43214",
+    description: "Tiger prawns, premium quality. Refrigerated storage available.",
+    status: "active",
+    rating: 4.9,
+    totalSales: 189,
+    createdAt: new Date(),
+  },
+  {
+    id: "6",
+    userId: 6,
+    fishType: "Mackerel",
+    quantity: 150,
+    price: 220,
+    location: "Kakinada Port",
+    phone: "+91 98765 43215",
+    description: "Fresh mackerel, caught this morning. Competitive bulk pricing.",
+    status: "active",
+    rating: 4.5,
+    totalSales: 143,
+    createdAt: new Date(),
+  },
+];
+
 export default function Marketplace() {
   const [selectedListing, setSelectedListing] = useState<string | null>(null);
   
@@ -32,7 +120,8 @@ export default function Marketplace() {
     queryKey: ['/api/marketplace'],
   });
   
-  const displayListings = apiListings || [];
+  // Use mock data if API fails or returns empty
+  const displayListings = apiListings && apiListings.length > 0 ? apiListings : mockListings;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-card pt-24 pb-12 px-4">
@@ -51,7 +140,7 @@ export default function Marketplace() {
           </p>
         </motion.div>
 
-        {isLoading && (
+        {isLoading && !error && (
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
               <div className="inline-block w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" data-testid="spinner-loading"></div>
@@ -60,26 +149,7 @@ export default function Marketplace() {
           </div>
         )}
         
-        {error && (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <p className="text-muted-foreground mb-2">Failed to load marketplace listings</p>
-              <p className="text-sm text-muted-foreground">Please try again later</p>
-            </div>
-          </div>
-        )}
-        
-        {!isLoading && !error && displayListings.length === 0 && (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <Fish className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground mb-2">No listings available</p>
-              <p className="text-sm text-muted-foreground">Check back later for new fish listings</p>
-            </div>
-          </div>
-        )}
-        
-        {!isLoading && !error && displayListings.length > 0 && (
+        {!isLoading && displayListings.length > 0 && (
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Listings */}
           <motion.div
