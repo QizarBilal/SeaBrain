@@ -59,18 +59,18 @@ export default function Home() {
               SEABRAIN
             </h3>
             <p className="text-sm text-muted-foreground">
-              Empowering Bharat's Fishermen through Intelligent Oceans
+              Empowering India's Fishermen through Ocean Intelligence
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
-            <span>Government of Andhra Pradesh</span>
+            <span>6+ Months of Development</span>
             <span>•</span>
-            <span>SmartIDEAthon 2025</span>
+            <span>AI-Powered Platform</span>
             <span>•</span>
-            <span>Digital Fisheries Mission</span>
+            <span>Sustainable Fishing Initiative</span>
           </div>
           <div className="text-xs text-muted-foreground">
-            © 2025 SEABRAIN. Supporting UN SDG-14: Life Below Water
+            © 2025 SEABRAIN. Supporting UN SDG-14: Life Below Water & Coastal Communities
           </div>
         </div>
       </footer>
