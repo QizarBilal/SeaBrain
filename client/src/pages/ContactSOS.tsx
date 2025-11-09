@@ -262,15 +262,15 @@ export default function ContactSOS() {
             transition={{ delay: 0.7 }}
           >
             <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
-              <div className="relative h-64 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent z-10" />
+              <div className="relative h-80 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent z-10" />
                 <img
                   src="/sakthivel.jpg"
                   alt="Sakthivel S M - Founder"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-contain p-4"
                 />
                 <div className="absolute bottom-4 left-4 z-20">
-                  <Badge className="bg-primary text-primary-foreground text-sm px-3 py-1">
+                  <Badge className="bg-primary text-primary-foreground text-sm px-3 py-1 shadow-lg">
                     Founder
                   </Badge>
                 </div>
@@ -334,15 +334,15 @@ export default function ContactSOS() {
             transition={{ delay: 0.8 }}
           >
             <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-secondary/50">
-              <div className="relative h-64 bg-gradient-to-br from-secondary/20 via-accent/20 to-primary/20 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent z-10" />
+              <div className="relative h-80 bg-gradient-to-br from-secondary/20 via-accent/20 to-primary/20 overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent z-10" />
                 <img
                   src="/qizarbilal.png"
                   alt="Mohammed Qizar Bilal - Co-Founder"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-contain p-4"
                 />
                 <div className="absolute bottom-4 left-4 z-20">
-                  <Badge className="bg-secondary text-secondary-foreground text-sm px-3 py-1">
+                  <Badge className="bg-secondary text-secondary-foreground text-sm px-3 py-1 shadow-lg">
                     Co-Founder
                   </Badge>
                 </div>

@@ -30,9 +30,11 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" data-testid="link-home">
             <div className="flex items-center gap-3 hover-elevate active-elevate-2 px-3 py-2 rounded-lg transition-all cursor-pointer">
-              <div className="bg-gradient-to-br from-primary to-secondary p-2 rounded-lg">
-                <Waves className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src="/Seabrain2.png" 
+                alt="SeaBrain Logo" 
+                className="w-16 h-16 object-contain drop-shadow-lg"
+              />
               <div className="flex flex-col">
                 <span className="text-lg font-bold font-heading text-foreground">
                   SEABRAIN

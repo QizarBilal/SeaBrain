@@ -127,7 +127,7 @@ export function Hero() {
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-300/30 mb-8 shadow-2xl">
               <Ship className="w-4 h-4 text-cyan-300" />
               <span className="text-sm font-semibold text-cyan-100">
-                SmartIDEAthon 2025 | Digital Fisheries Mission
+                AI-Powered Ocean Intelligence Platform
               </span>
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             </div>
@@ -155,7 +155,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-cyan-50/90 mb-4 max-w-4xl mx-auto leading-relaxed font-light"
           >
-            Empowering Andhra Pradesh fishermen with <span className="font-semibold text-cyan-200">AI-powered predictions</span>, 
+            Empowering coastal fishermen with <span className="font-semibold text-cyan-200">AI-powered predictions</span>, 
             <span className="font-semibold text-blue-200"> real-time climate insights</span>, and 
             <span className="font-semibold text-cyan-200"> smart marketplace intelligence</span>
           </motion.p>
@@ -219,7 +219,7 @@ export function Hero() {
             transition={{ delay: 1 }}
             className="mt-10 text-cyan-200/60 text-sm"
           >
-            Trusted by Government of Andhra Pradesh • Supporting UN SDG-14: Life Below Water
+            Trusted by Fishing Communities Nationwide • Supporting UN SDG-14: Life Below Water
           </motion.div>
         </div>
       </div>
