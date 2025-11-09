@@ -82,17 +82,17 @@ export default function MarkCatch() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#001233] via-[#003d66] to-[#0066a1] pt-20 px-4 pb-12">
+    <div className="min-h-screen bg-gradient-to-b from-background to-card pt-24 pb-12 px-4">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-7xl mx-auto mb-8"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 font-heading">
-          🎣 Mark Catch & Search Fish
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-3 font-heading">
+          Mark Catch & Search Fish
         </h1>
-        <p className="text-lg text-blue-200">
+        <p className="text-lg text-muted-foreground">
           Record your catches and discover AI-powered fishing predictions
         </p>
       </motion.div>
@@ -119,18 +119,18 @@ export default function MarkCatch() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="p-6 bg-white/10 backdrop-blur-lg border-white/20">
-                  <h2 className="text-2xl font-bold text-white mb-2 font-heading">
+                <Card className="p-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-2 font-heading">
                     Mark Your Catch
                   </h2>
-                  <p className="text-blue-200 text-sm mb-6">
+                  <p className="text-muted-foreground text-sm mb-6">
                     Record your daily catch and help the AI improve future predictions.
                   </p>
 
                   <div className="space-y-4">
                     {/* Fish Name Dropdown */}
                     <div>
-                      <Label htmlFor="fish-name" className="text-white mb-2 block">
+                      <Label htmlFor="fish-name" className="mb-2 block">
                         <Fish className="inline w-4 h-4 mr-2" />
                         Fish Name
                       </Label>
@@ -150,7 +150,7 @@ export default function MarkCatch() {
 
                     {/* Fish Count */}
                     <div>
-                      <Label htmlFor="fish-count" className="text-white mb-2 block">
+                      <Label htmlFor="fish-count" className="mb-2 block">
                         <TrendingUp className="inline w-4 h-4 mr-2" />
                         Fish Count
                       </Label>
@@ -166,7 +166,7 @@ export default function MarkCatch() {
 
                     {/* Size/Weight */}
                     <div>
-                      <Label htmlFor="fish-weight" className="text-white mb-2 block">
+                      <Label htmlFor="fish-weight" className="mb-2 block">
                         <Weight className="inline w-4 h-4 mr-2" />
                         Size/Weight (kg)
                       </Label>
@@ -181,7 +181,7 @@ export default function MarkCatch() {
 
                     {/* Auto GPS Location */}
                     <div>
-                      <Label className="text-white mb-2 block">
+                      <Label className="mb-2 block">
                         <MapPin className="inline w-4 h-4 mr-2" />
                         GPS Location (Auto-detected)
                       </Label>
@@ -189,26 +189,26 @@ export default function MarkCatch() {
                         <Input
                           value={`${mockLocation.lat}°N`}
                           readOnly
-                          className="bg-white/5"
+                          className="bg-muted"
                         />
                         <Input
                           value={`${mockLocation.lng}°E`}
                           readOnly
-                          className="bg-white/5"
+                          className="bg-muted"
                         />
                       </div>
                     </div>
 
                     {/* Date & Time */}
                     <div>
-                      <Label className="text-white mb-2 block">
+                      <Label className="mb-2 block">
                         <Calendar className="inline w-4 h-4 mr-2" />
                         Date & Time (Auto-set)
                       </Label>
                       <Input
                         value={new Date().toLocaleString()}
                         readOnly
-                        className="bg-white/5"
+                        className="bg-muted"
                       />
                     </div>
 
@@ -216,14 +216,13 @@ export default function MarkCatch() {
                     <div className="flex gap-3 pt-4">
                       <Button
                         onClick={handleSaveCatch}
-                        className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+                        className="flex-1"
                       >
                         Save Catch
                       </Button>
                       <Button
                         onClick={handleClearForm}
                         variant="outline"
-                        className="border-white/20 text-white hover:bg-white/10"
                       >
                         Clear
                       </Button>
@@ -238,14 +237,14 @@ export default function MarkCatch() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <Card className="p-6 bg-white/10 backdrop-blur-lg border-white/20 h-full">
-                  <h3 className="text-xl font-bold text-white mb-4 font-heading flex items-center gap-2">
+                <Card className="p-6 h-full">
+                  <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
                     <Navigation className="w-5 h-5" />
                     Your Location
                   </h3>
                   
                   {/* Mock Map Display */}
-                  <div className="relative w-full h-[400px] rounded-lg overflow-hidden bg-gradient-to-br from-blue-900/50 to-cyan-900/50 border border-white/10">
+                  <div className="relative w-full h-[400px] rounded-lg overflow-hidden bg-muted border border-border">
                     <motion.div
                       animate={{
                         scale: [1, 1.1, 1],
@@ -258,13 +257,13 @@ export default function MarkCatch() {
                       className="absolute inset-0 flex items-center justify-center"
                     >
                       <div className="text-center">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
-                          <MapPin className="w-8 h-8 text-white" />
+                        <div className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                          <MapPin className="w-8 h-8 text-primary-foreground" />
                         </div>
-                        <div className="text-white font-semibold">
+                        <div className="text-foreground font-semibold">
                           {mockLocation.lat}°N, {mockLocation.lng}°E
                         </div>
-                        <div className="text-blue-200 text-sm mt-2">
+                        <div className="text-muted-foreground text-sm mt-2">
                           Visakhapatnam Coast
                         </div>
                       </div>
@@ -281,7 +280,7 @@ export default function MarkCatch() {
                         repeat: Infinity,
                         ease: "easeOut",
                       }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-cyan-400"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-primary"
                     />
                   </div>
                 </Card>
@@ -298,18 +297,18 @@ export default function MarkCatch() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="p-6 bg-white/10 backdrop-blur-lg border-white/20">
-                  <h2 className="text-2xl font-bold text-white mb-2 font-heading">
+                <Card className="p-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-2 font-heading">
                     Search Fish Zones (AI Prediction)
                   </h2>
-                  <p className="text-blue-200 text-sm mb-6">
+                  <p className="text-muted-foreground text-sm mb-6">
                     Enter a fish name to view predicted locations & time for best catch.
                   </p>
 
                   {/* Search Input */}
                   <div className="space-y-4">
                     <div>
-                      <Label htmlFor="search-fish" className="text-white mb-2 block">
+                      <Label htmlFor="search-fish" className="mb-2 block">
                         <Search className="inline w-4 h-4 mr-2" />
                         Search by Fish Name
                       </Label>
@@ -329,7 +328,7 @@ export default function MarkCatch() {
 
                     <Button
                       onClick={handleSearchFish}
-                      className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+                      className="w-full"
                     >
                       <Search className="w-4 h-4 mr-2" />
                       Search Predictions
@@ -343,19 +342,19 @@ export default function MarkCatch() {
                       animate={{ opacity: 1, y: 0 }}
                       className="mt-6 space-y-4"
                     >
-                      <div className="p-4 rounded-lg bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30">
+                      <div className="p-4 rounded-lg bg-card border">
                         <div className="flex items-center justify-between mb-3">
-                          <h3 className="text-lg font-semibold text-white">
+                          <h3 className="text-lg font-semibold text-foreground">
                             {prediction.fish} Prediction
                           </h3>
-                          <Badge variant="secondary" className="bg-green-500/20 text-green-300">
+                          <Badge variant="secondary">
                             Active
                           </Badge>
                         </div>
 
                         {/* Probability */}
                         <div className="mb-4">
-                          <div className="flex justify-between text-sm text-white mb-2">
+                          <div className="flex justify-between text-sm text-foreground mb-2">
                             <span>Catch Probability</span>
                             <span className="font-bold">{prediction.probability}%</span>
                           </div>
@@ -364,10 +363,10 @@ export default function MarkCatch() {
 
                         {/* Nearest Zones */}
                         <div className="mb-3">
-                          <div className="text-sm text-blue-200 mb-2">Nearest Zones:</div>
+                          <div className="text-sm text-muted-foreground mb-2">Nearest Zones:</div>
                           <div className="flex flex-wrap gap-2">
                             {prediction.zones.map((zone: string) => (
-                              <Badge key={zone} variant="outline" className="border-cyan-400/50 text-cyan-300">
+                              <Badge key={zone} variant="outline">
                                 {zone}
                               </Badge>
                             ))}
@@ -375,21 +374,21 @@ export default function MarkCatch() {
                         </div>
 
                         {/* Suggested Time */}
-                        <div className="p-3 rounded bg-blue-500/20 border border-blue-500/30">
-                          <div className="text-xs text-blue-200 mb-1">Best Fishing Window:</div>
-                          <div className="text-white font-semibold">{prediction.time}</div>
+                        <div className="p-3 rounded bg-secondary border">
+                          <div className="text-xs text-muted-foreground mb-1">Best Fishing Window:</div>
+                          <div className="text-foreground font-semibold">{prediction.time}</div>
                         </div>
                       </div>
 
                       {/* Warning Banner */}
                       <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
                         <div className="flex items-start gap-2">
-                          <span className="text-yellow-400">⚠️</span>
+                          <AlertTriangle className="w-4 h-4 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
                           <div>
-                            <div className="text-yellow-300 font-semibold text-sm">
+                            <div className="text-yellow-700 dark:text-yellow-300 font-semibold text-sm">
                               Safety Advisory
                             </div>
-                            <div className="text-yellow-200/80 text-xs mt-1">
+                            <div className="text-yellow-600 dark:text-yellow-400 text-xs mt-1">
                               Check weather conditions and avoid restricted zones
                             </div>
                           </div>
@@ -406,14 +405,14 @@ export default function MarkCatch() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <Card className="p-6 bg-white/10 backdrop-blur-lg border-white/20 h-full">
-                  <h3 className="text-xl font-bold text-white mb-4 font-heading flex items-center gap-2">
+                <Card className="p-6 h-full">
+                  <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
                     <MapPin className="w-5 h-5" />
                     Prediction Map
                   </h3>
                   
                   {/* Mock Prediction Map */}
-                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gradient-to-br from-blue-900/50 to-cyan-900/50 border border-white/10">
+                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-muted border border-border">
                     {prediction ? (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -436,10 +435,10 @@ export default function MarkCatch() {
                             <div className="text-6xl">🐟</div>
                           </motion.div>
                           
-                          <div className="text-white font-semibold text-lg mb-2">
+                          <div className="text-foreground font-semibold text-lg mb-2">
                             {prediction.fish} Zone
                           </div>
-                          <div className="text-cyan-300 text-sm">
+                          <div className="text-muted-foreground text-sm">
                             {prediction.lat}°N, {prediction.lng}°E
                           </div>
                           
@@ -454,13 +453,13 @@ export default function MarkCatch() {
                               repeat: Infinity,
                               ease: "easeOut",
                             }}
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-radial from-green-500/40 to-transparent"
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-primary/20"
                           />
                         </div>
                       </motion.div>
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-blue-200">
+                        <div className="text-center text-muted-foreground">
                           <Search className="w-12 h-12 mx-auto mb-3 opacity-50" />
                           <p>Search for a fish to view predictions</p>
                         </div>

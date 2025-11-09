@@ -11,14 +11,14 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Home", icon: "🏠" },
-    { href: "/dashboard", label: "Dashboard", icon: "📊" },
-    { href: "/map", label: "Fish Zones", icon: "🗺️" },
-    { href: "/climate", label: "Climate", icon: "🌤️" },
-    { href: "/marketplace", label: "Marketplace", icon: "🛒" },
-    { href: "/mark-catch", label: "Mark Catch", icon: "🎣" },
-    { href: "/contact-sos", label: "Contact/SOS", icon: "🚨" },
-    { href: "/community", label: "Community", icon: "👥" },
+    { href: "/", label: "Home" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/map", label: "Fish Zones" },
+    { href: "/climate", label: "Climate" },
+    { href: "/marketplace", label: "Marketplace" },
+    { href: "/mark-catch", label: "Mark Catch" },
+    { href: "/contact-sos", label: "Contact/SOS" },
+    { href: "/community", label: "Community" },
   ];
 
   const isActive = (href: string) => location === href;
@@ -50,10 +50,9 @@ export function Navbar() {
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase()}`}>
                 <Button
                   variant={isActive(link.href) ? "secondary" : "ghost"}
-                  className="relative gap-1.5"
+                  className="relative"
                   data-testid={`button-nav-${link.label.toLowerCase()}`}
                 >
-                  <span className="text-sm">{link.icon}</span>
                   {link.label}
                   {isActive(link.href) && (
                     <motion.div
@@ -130,10 +129,9 @@ export function Navbar() {
                 <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase()}`}>
                   <Button
                     variant={isActive(link.href) ? "secondary" : "ghost"}
-                    className="w-full justify-start gap-2"
+                    className="w-full justify-start"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span>{link.icon}</span>
                     {link.label}
                   </Button>
                 </Link>
