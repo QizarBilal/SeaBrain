@@ -12,6 +12,8 @@ import FishMap from "@/pages/FishMap";
 import Climate from "@/pages/Climate";
 import Marketplace from "@/pages/Marketplace";
 import Community from "@/pages/Community";
+import MarkCatch from "@/pages/MarkCatch";
+import ContactSOS from "@/pages/ContactSOS";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +25,8 @@ function Router() {
       <Route path="/climate" component={Climate} />
       <Route path="/marketplace" component={Marketplace} />
       <Route path="/community" component={Community} />
+      <Route path="/mark-catch" component={MarkCatch} />
+      <Route path="/contact-sos" component={ContactSOS} />
       <Route component={NotFound} />
     </Switch>
   );
